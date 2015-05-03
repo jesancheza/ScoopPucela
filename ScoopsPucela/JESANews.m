@@ -21,10 +21,30 @@
              boxNew:(NSString *) boxNew
              author:(NSString *) author{
     
+    return [self initWithTitle:title
+                        boxNew:boxNew
+                        author:author
+                        estado:@""
+                        rating:0.0f];
+}
+
+-(id) initWithTitle:(NSString *) title estado:(NSString *) estado rating:(float) rating{
+    
+    return [self initWithTitle:title
+                        boxNew:@""
+                        author:@""
+                        estado:estado
+                        rating:rating];
+}
+
+-(id) initWithTitle:(NSString *) title boxNew:(NSString *) boxNew author:(NSString *) author estado:(NSString *) estado rating:(float) rating{
+    
     if (self == [super init]) {
         _title = title;
         _boxNew = boxNew;
         _author = author;
+        _estado = estado;
+        _rating = rating;
     }
     
     return self;

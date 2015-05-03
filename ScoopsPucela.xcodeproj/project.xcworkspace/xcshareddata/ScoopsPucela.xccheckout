@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>D6BC99D9-4DB9-46BA-ABDF-9D9E8AC3B1D9</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>98A0A5B6812408A6672AEE014564BA9CC8E76DAF</key>
+		<string>https://github.com/jesancheza/ScoopPucela</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ScoopsPucela.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>98A0A5B6812408A6672AEE014564BA9CC8E76DAF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/jesancheza/ScoopPucela</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>98A0A5B6812408A6672AEE014564BA9CC8E76DAF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>98A0A5B6812408A6672AEE014564BA9CC8E76DAF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ScoopsPucela</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -16,7 +16,10 @@
 @property (nonatomic, strong) NSString *boxNew;
 @property (nonatomic, strong) NSString *author;
 @property (nonatomic) float rating;
+@property (nonatomic, strong) NSString *estado;
 
 -(id) initWithTitle:(NSString *) title boxNew:(NSString *) boxNew author:(NSString *) author;
+-(id) initWithTitle:(NSString *) title estado:(NSString *) estado rating:(float) rating;
+-(id) initWithTitle:(NSString *) title boxNew:(NSString *) boxNew author:(NSString *) author estado:(NSString *) estado rating:(float) rating;
 
 @end

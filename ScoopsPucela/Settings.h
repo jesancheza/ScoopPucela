@@ -12,3 +12,6 @@
 
 #define IMAGE_FACEBOOK_CHARGE @"image_facebook"
 #define URL_IMAGE_PROFILE @"url_profile"
+
+
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)

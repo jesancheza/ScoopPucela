@@ -8,7 +8,6 @@
 
 @import UIKit;
 @import CoreLocation;
-@class JESALocation;
 
 
 typedef void (^profileCompletion)(NSDictionary* profInfo);
@@ -16,7 +15,7 @@ typedef void (^completeBlock)(NSArray* results);
 typedef void (^completeOnError)(NSError *error);
 typedef void (^completionWithURL)(NSURL *theUrl, NSError *error);
 
-@interface JESAAutoresViewController : UIViewController <CLLocationManagerDelegate, UITextViewDelegate>
+@interface JESAAutoresViewController : UIViewController <CLLocationManagerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *picProfile;
 @property (strong, nonatomic) NSURL *profilePicture;
@@ -26,8 +25,8 @@ typedef void (^completionWithURL)(NSURL *theUrl, NSError *error);
 @property (weak, nonatomic) IBOutlet UITextView *boxNews;
 @property (weak, nonatomic) IBOutlet UIToolbar *bottomBar;
 
-@property (nonatomic, readonly) BOOL hasLocation;
-@property (nonatomic, strong) JESALocation *location;
+@property (nonatomic, copy) NSString *city;
+@property (nonatomic, copy) NSString *address;
 
 - (IBAction)addNew:(id)sender;
 - (IBAction)takePhoto:(id)sender;

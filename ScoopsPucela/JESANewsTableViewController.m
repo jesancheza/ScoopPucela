@@ -58,11 +58,6 @@
     
     [self readData];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,7 +71,7 @@
     client = [MSClient clientWithApplicationURL:[NSURL URLWithString:AZUREMOBILESERVICE_ENDPOINT]
                                  applicationKey:AZUREMOBILESERVICE_APPKEY];
     
-    NSDictionary *parameters = @{@"estado" : @"Sin publicar"};
+    NSDictionary *parameters = @{@"estado" : @"Publicada"};
     
     [client invokeAPI:@"getallnews" body:nil HTTPMethod:@"GET" parameters:parameters headers:nil completion:^(id result, NSHTTPURLResponse *response, NSError *error) {
         

@@ -10,7 +10,6 @@
 #import "Settings.h"
 #import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>
 #import "ViewController.h"
-#import "JESALocation.h"
 @import CoreLocation;
 
 @interface JESAAutoresViewController (){
@@ -61,24 +60,6 @@
     
     // Alta en notificaciones de teclado
     [self setupKeyboardNotifications];
-    
-    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    if ( ((status == kCLAuthorizationStatusAuthorizedAlways) || (status == kCLAuthorizationStatusNotDetermined))
-        && [CLLocationManager locationServicesEnabled]) {
-        
-        // Tenemos acceso a localización
-        self.locationManager = [[CLLocationManager alloc] init];
-        self.locationManager.delegate = self;
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
-        [self.locationManager startUpdatingLocation];
-        
-        // No me interesan datos pasado mucho tiempo, asi que si no
-        // recibimos posición en menos de 5 segundos, paramos al
-        // locationManager
-        /*dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-         [self zapLocationManager];
-         });*/
-    }
 
 }
 
@@ -86,6 +67,34 @@
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
+    if ( ((status == kCLAuthorizationStatusAuthorizedAlways) ||
+          (status == kCLAuthorizationStatusAuthorizedWhenInUse) ||
+          (status == kCLAuthorizationStatusNotDetermined))
+        && [CLLocationManager locationServicesEnabled]) {
+        
+        // Tenemos acceso a localización
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers;
+        
+        if(IS_OS_8_OR_LATER)
+        {
+            if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+            {
+                [self.locationManager requestWhenInUseAuthorization];
+            }
+        }
+        
+        [self.locationManager startUpdatingLocation];
+        
+        // No me interesan datos pasado mucho tiempo, asi que si no
+        // recibimos posición en menos de 5 segundos, paramos al
+        // locationManager
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self zapLocationManager];
+        });
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -281,17 +290,14 @@
 #pragma mark - Actions
 - (IBAction)addNew:(id)sender {
     MSTable *news = [client tableWithName:@"news"];
-    //    Scoop *scoop = [[Scoop alloc]initWithTitle:self.titleText.text
-    //                                      andPhoto:nil
-    //                                         aText:self.boxNews.text
-    //                                      anAuthor:@""
-    //                                         aCoor:CLLocationCoordinate2DMake(0, 0)];
     
     NSDictionary * scoop= @{@"titulo" : self.titleNew.text,
                             @"noticia" : self.boxNews.text,
                             @"autor" : self.profileName,
                             @"estado" : @"Sin publicar",
-                            @"ciudad" : self.location.address,
+                            @"ciudad" : self.city,
+                            @"address" : self.address,
+                            @"rating" : [NSNumber numberWithInt:0],
                                 };
     [news insert:scoop
       completion:^(NSDictionary *item, NSError *error) {
@@ -300,17 +306,39 @@
               NSLog(@"Error %@", error);
           } else {
               NSLog(@"OK");
+              self.titleNew.text = @"";
+              self.boxNews.text = @"";
           }
           
       }];
 }
 
 - (IBAction)takePhoto:(id)sender {
-}
-
-#pragma mark - Init
--(BOOL)hasLocation{
-    return (nil != self.location);
+    // Creamos un UIImagePickerController
+    UIImagePickerController *picker = [UIImagePickerController new];
+    
+    // Lo configuro
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        // Uso la cámara
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }else{
+        // Tiro del carrete
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    picker.delegate = self;
+    
+    // Modificamos la transición al mostrar la modal.
+    // UIModalTransitionStylePartialCurl: Cuidado porque dependiendo del contenido puede que no desaparezca
+    // la vista inferior y por lo tanto no se ejecuta ni el viewWillAppear ni viewWillDisappear.
+    picker.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    
+    // Lo muestro de forma modal
+    [self presentViewController:picker
+                       animated:YES completion:^{
+                           // Esto se va a ejecutar cuando termine la animación que muestra al picker.
+                       }];
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -322,12 +350,39 @@
     
     
     
-    if (self.location == nil) {
+    if (self.city == nil) {
         // Pillamos la última
         CLLocation *loc = [locations lastObject];
         
         // Creamos una AGTLocation
-        self.location = [JESALocation locationWithCLLocation:loc];
+        CLGeocoder *geocoder = [[CLGeocoder alloc]init];
+        
+        [geocoder reverseGeocodeLocation:loc completionHandler:^(NSArray *placemarks, NSError *error) {
+            if (!error) {
+                
+                CLPlacemark *placeMark = [placemarks objectAtIndex:0];
+                NSLog(@"%@ ", placeMark.addressDictionary);
+                // preparamos el diccionario
+                // no sabemos si tiene dirección - tenemos que decir
+                NSString *addressString;
+                if ([placeMark.addressDictionary valueForKey:@"Street"]) {
+                    addressString = [placeMark.addressDictionary valueForKey:@"Street"];
+                } else {
+                    addressString = placeMark.administrativeArea;
+                }
+                //[placeMark.addressDictionary valueForKey:@"Street"]
+                /*NSMutableDictionary *addressDic = @{@"location": @{@"address": addressString,
+                                                                   @"cc": placeMark.ISOcountryCode,
+                                                                   @"city": placeMark.locality,
+                                                                   @"country": placeMark.country,
+                                                                   @"distance": @0,
+                                                                   @"lat": [NSNumber numberWithDouble:self.positionPlace.coordinate.latitude] ,
+                                                                    @"lng": [NSNumber numberWithDouble:self.positionPlace.coordinate.longitude],
+                                                                   @"state": placeMark.administrativeArea}};*/
+                self.city = placeMark.locality;
+                self.address = addressString;
+            }
+        }];
     }else{
         // Hay un bug desde iOS 4 que hace que a veces un location mana
         // siga mandando mensajes después de habersele dicho que pare.

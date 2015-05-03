@@ -62,7 +62,7 @@
                         </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WrL-5b-JqJ">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WrL-5b-JqJ" id="dKX-rI-qf4">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -92,29 +92,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Wpf-Df-k1g">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem systemItem="bookmarks" id="KA4-Pl-GRP">
-                                        <connections>
-                                            <segue destination="0Px-MU-BSg" kind="push" id="coC-YN-MiT"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Xnh-N9-Km0"/>
-                                    <barButtonItem systemItem="add" id="ZKD-pf-YBV">
-                                        <connections>
-                                            <action selector="addNew:" destination="gCq-LS-eml" id="bLg-5g-Jei"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mvg-Tc-qaJ"/>
-                                    <barButtonItem systemItem="camera" id="6eo-FI-ZOq">
-                                        <connections>
-                                            <action selector="takePhoto:" destination="gCq-LS-eml" id="huI-Zc-gHg"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Fdx-Dn-Xdj">
                                 <rect key="frame" x="254" y="65" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -137,16 +114,39 @@
                                 <rect key="frame" x="16" y="165" width="288" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nMN-P5-Gau">
                                 <rect key="frame" x="98" y="94" width="124" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Wpf-Df-k1g">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem systemItem="bookmarks" id="KA4-Pl-GRP">
+                                        <connections>
+                                            <segue destination="0UH-yg-EN7" kind="push" id="5dK-9z-dQ7"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Xnh-N9-Km0"/>
+                                    <barButtonItem systemItem="add" id="ZKD-pf-YBV">
+                                        <connections>
+                                            <action selector="addNew:" destination="gCq-LS-eml" id="bLg-5g-Jei"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mvg-Tc-qaJ"/>
+                                    <barButtonItem systemItem="camera" id="6eo-FI-ZOq">
+                                        <connections>
+                                            <action selector="takePhoto:" destination="gCq-LS-eml" id="huI-Zc-gHg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <connections>
@@ -164,6 +164,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vFp-sy-yJr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2227" y="-453"/>
+        </scene>
+        <!--Own News Table View Controller-->
+        <scene sceneID="sOQ-1k-Ytg">
+            <objects>
+                <tableViewController id="0UH-yg-EN7" customClass="JESAOwnNewsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="XBL-8r-ETv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0xy-3g-cOP">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0xy-3g-cOP" id="FyS-kq-bPv">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="0UH-yg-EN7" id="ZoV-za-XEk"/>
+                            <outlet property="delegate" destination="0UH-yg-EN7" id="hPA-hT-zkE"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="5hF-XL-fJ0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K9T-e4-ZDe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3149" y="-447"/>
         </scene>
         <!--Noticias-->
         <scene sceneID="tYW-Ts-8ex">
@@ -221,6 +250,25 @@
             </objects>
             <point key="canvasLocation" x="1227" y="277"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="yhA-wz-G2C">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XnQ-Gv-n9R" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Lhf-xr-pxz"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vsR-2n-qgt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0UH-yg-EN7" kind="relationship" relationship="rootViewController" id="FCB-6h-uKC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZZu-ST-qgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2617" y="-447"/>
+        </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -229,6 +277,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="S13-ky-4fV"/>
-        <segue reference="coC-YN-MiT"/>
+        <segue reference="5dK-9z-dQ7"/>
+        <segue reference="Rge-5p-U8H"/>
     </inferredMetricsTieBreakers>
 </document>

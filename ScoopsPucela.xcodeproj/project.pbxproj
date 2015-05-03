@@ -22,6 +22,9 @@
 		EDD1355F1AF4E46E0005BBB5 /* noimage.png in Resources */ = {isa = PBXBuildFile; fileRef = EDD1355E1AF4E46E0005BBB5 /* noimage.png */; };
 		EDD135631AF51F610005BBB5 /* JESALocation.m in Sources */ = {isa = PBXBuildFile; fileRef = EDD135621AF51F600005BBB5 /* JESALocation.m */; };
 		EDE9A6271AF151DE007F894D /* JESANews.m in Sources */ = {isa = PBXBuildFile; fileRef = EDE9A6261AF151DE007F894D /* JESANews.m */; };
+		EDEB498A1AF6DB090078F8D8 /* JESAOwnNewsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEB49891AF6DB090078F8D8 /* JESAOwnNewsTableViewController.m */; };
+		EDEB498E1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = EDEB498C1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.m */; };
+		EDEB498F1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EDEB498D1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +65,11 @@
 		EDD135621AF51F600005BBB5 /* JESALocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESALocation.m; sourceTree = "<group>"; };
 		EDE9A6251AF151DE007F894D /* JESANews.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESANews.h; sourceTree = "<group>"; };
 		EDE9A6261AF151DE007F894D /* JESANews.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESANews.m; sourceTree = "<group>"; };
+		EDEB49881AF6DB090078F8D8 /* JESAOwnNewsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESAOwnNewsTableViewController.h; sourceTree = "<group>"; };
+		EDEB49891AF6DB090078F8D8 /* JESAOwnNewsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESAOwnNewsTableViewController.m; sourceTree = "<group>"; };
+		EDEB498B1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JESAAuthorNewCellView.h; sourceTree = "<group>"; };
+		EDEB498C1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JESAAuthorNewCellView.m; sourceTree = "<group>"; };
+		EDEB498D1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JESAAuthorNewCellView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +163,8 @@
 				ED43C19B1AF01CA60060D1DD /* JESAAutoresViewController.m */,
 				ED43C19D1AF01D630060D1DD /* JESANewsTableViewController.h */,
 				ED43C19E1AF01D630060D1DD /* JESANewsTableViewController.m */,
+				EDEB49881AF6DB090078F8D8 /* JESAOwnNewsTableViewController.h */,
+				EDEB49891AF6DB090078F8D8 /* JESAOwnNewsTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -176,6 +186,9 @@
 				EDD135591AF4BD3E0005BBB5 /* JESANewCellView.h */,
 				EDD1355A1AF4BD3E0005BBB5 /* JESANewCellView.m */,
 				EDD1355B1AF4BD3E0005BBB5 /* JESANewCellView.xib */,
+				EDEB498B1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.h */,
+				EDEB498C1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.m */,
+				EDEB498D1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -270,6 +283,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDD1355F1AF4E46E0005BBB5 /* noimage.png in Resources */,
+				EDEB498F1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.xib in Resources */,
 				EDD1355D1AF4BD3E0005BBB5 /* JESANewCellView.xib in Resources */,
 				EDD135561AF36DC10005BBB5 /* Main.storyboard in Resources */,
 				ED43C1811AEFE3EE0060D1DD /* LaunchScreen.xib in Resources */,
@@ -291,12 +305,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDEB498A1AF6DB090078F8D8 /* JESAOwnNewsTableViewController.m in Sources */,
 				ED43C1791AEFE3ED0060D1DD /* ViewController.m in Sources */,
 				ED43C1761AEFE3ED0060D1DD /* AppDelegate.m in Sources */,
 				ED43C19F1AF01D630060D1DD /* JESANewsTableViewController.m in Sources */,
 				EDD1355C1AF4BD3E0005BBB5 /* JESANewCellView.m in Sources */,
 				EDE9A6271AF151DE007F894D /* JESANews.m in Sources */,
 				EDD135631AF51F610005BBB5 /* JESALocation.m in Sources */,
+				EDEB498E1AF6DB3D0078F8D8 /* JESAAuthorNewCellView.m in Sources */,
 				ED43C1731AEFE3ED0060D1DD /* main.m in Sources */,
 				ED43C19C1AF01CA70060D1DD /* JESAAutoresViewController.m in Sources */,
 			);
